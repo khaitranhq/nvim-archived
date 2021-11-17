@@ -54,7 +54,7 @@ let g:airline#extensions#ale#enabled = 1
 nmap <leader>df :ALEGoToDefinition<CR>
 
 "coc.nvim
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright', 'coc-cfn-lint']
 " " TextEdit might fail if hidden is not set.
 set hidden
 
