@@ -68,4 +68,8 @@ noremap <leader>hr <C-W>>
 set autoread 
 au CursorHold * checktime
 
+" search with selected character
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+
