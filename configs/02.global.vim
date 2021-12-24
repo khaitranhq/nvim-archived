@@ -67,3 +67,5 @@ noremap <leader>hr <C-W>>
 " Auto reload file
 set autoread 
 au CursorHold * checktime
+
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
