@@ -109,6 +109,8 @@ function! s:show_documentation()
 		call CocAction('doHover')
 	endif
 endfunction
+nmap <leader>rn <Plug>(coc-rename)
+
 
 " Vim-javascript
 let g:javascript_plugin_jsdoc = 1
