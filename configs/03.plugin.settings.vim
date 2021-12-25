@@ -36,23 +36,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" ALE
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'cpp': ['g++'],
-\   'python': ['pylint']
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trail thing_lines', 'trim_whitespace','prettier'],
-\   'python': ['black']
-\}
-let g:ale_linters_explicit = 1
-let g:airline#extensions#ale#enabled = 1
-nmap <leader>df :ALEGoToDefinition<CR>
-
 "coc.nvim
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright', 'coc-cfn-lint']
 " " TextEdit might fail if hidden is not set.

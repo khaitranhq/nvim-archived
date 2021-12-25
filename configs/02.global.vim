@@ -72,4 +72,3 @@ au CursorHold * checktime
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-
