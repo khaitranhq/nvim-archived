@@ -1,3 +1,10 @@
 {
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/usr/lib/jvm/java-11-openjdk-amd64",
+      "default": true
+    }
+  ]
 }
