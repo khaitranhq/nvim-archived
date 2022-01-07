@@ -37,6 +37,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 "coc.nvim
+noremap <leader>f :CocSearch
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright', 'coc-cfn-lint', 'coc-java']
 " " TextEdit might fail if hidden is not set.
 set hidden
@@ -124,7 +125,6 @@ nmap <leader>gb :Gblame<CR>
 map <C-f> <Esc><Esc>:Files!<CR>
 inoremap <C-f> <Esc><Esc>:Blines!<CR>
 map <C-g> <Esc><Esc>:BCommits!<CR>
-noremap <leader>f :Rg
 nmap <leader>bs :Buffers<CR>
 
 " Floaterm
