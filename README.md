@@ -36,3 +36,4 @@ clone this repo here
 - `cst<p>` change tag surround to <p>
 - `dsiW{` delete {} in current word (continuos charactor without space)
 - `<leader>rn` rename variables, function...
+- `di[` delete inside [], similar to {}, '', "", ``
