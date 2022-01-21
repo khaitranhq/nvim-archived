@@ -95,6 +95,8 @@ function! s:show_documentation()
 endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
+nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<CR>
+
 
 " Vim-javascript
 let g:javascript_plugin_jsdoc = 1

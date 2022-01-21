@@ -29,6 +29,8 @@ clone this repo here
 ### Moving
 - `Ctrl + o` Move to previous postion of cursor
 - `Ctrl + 6` Back to previous file
+- `gd` go to definition in current file
+- `gs` go to definition with split tab
 ### Change, delete
 - `ctC` delete until meet charactor C and change mode to insert
 - `csiw"'` change " to ' in current word (only contain Alphabet character)
