@@ -38,7 +38,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 "coc.nvim
 noremap <leader>f :CocSearch
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright', 'coc-cfn-lint', 'coc-java']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-json', 'coc-clangd', 'coc-pyright', 'coc-java']
 " " TextEdit might fail if hidden is not set.
 set hidden
 
