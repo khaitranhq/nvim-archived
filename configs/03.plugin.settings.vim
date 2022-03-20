@@ -122,7 +122,8 @@ nmap <leader>gc :Git commit<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gb :Gblame<CR>
-nmap <leader>gp :Git push<CR>
+nmap <leader>gps :Git push<CR>
+nmap <leader>gpl :Git pull<CR>
 
 " Fzf
 map <C-f> <Esc><Esc>:Files!<CR>
