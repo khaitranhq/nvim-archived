@@ -17,6 +17,17 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+local on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
+
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<leader>py', vim.lsp.buf.formatting, bufopts)
+end
+
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -131,3 +142,49 @@ vim.api.nvim_set_keymap('n', '<leader>gs', ':G<cr>', {})
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Gdiffsplit<cr>', {})
 vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<cr>', {})
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Gblame<cr>', {})
+
+--LUALINE
+--TODO add buffer tabline
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+
+--NEOFORMAT
+vim.api.nvim_set_keymap('n', '<leader>fm', ':Neoformat<cr>', { })
