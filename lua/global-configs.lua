@@ -28,3 +28,5 @@ vim.api.nvim_set_keymap('', '<c-l>', ':wincmd l<cr>', { noremap = true})
 
 vim.api.nvim_set_keymap('', 'qq', ':qa<cr>', { noremap = true})
 vim.g.mapleader = ' '
+
+vim.api.nvim_set_keymap('n', ';', ':', { noremap = true})
