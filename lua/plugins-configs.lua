@@ -131,8 +131,8 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- TELESCOPE
-vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Telescope find_files<cr>', { noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>Telescope live_grep<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', '<c-f>', '<cmd>Telescope find_files<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', '<c-g>', '<cmd>Telescope live_grep<cr>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<cr>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>Telescope help_tags<cr>', { noremap = true})
 
@@ -206,3 +206,5 @@ require("bufferline").setup{
     end,
   }
 }
+
+require('Comment').setup()

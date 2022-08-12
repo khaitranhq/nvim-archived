@@ -30,4 +30,11 @@ return require('packer').startup(function(use)
   use 'sbdchd/neoformat'
   use 'tpope/vim-surround'
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
 end)
