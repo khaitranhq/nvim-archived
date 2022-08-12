@@ -39,4 +39,5 @@ return require('packer').startup(function(use)
   }
 
   use 'sbdchd/neoformat'
+  use 'tpope/vim-surround'
 end)
