@@ -125,3 +125,9 @@ vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>Telescope live_grep<cr>', { nore
 vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<cr>', { noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>Telescope help_tags<cr>', { noremap = true})
 
+
+-- GIT
+vim.api.nvim_set_keymap('n', '<leader>gs', ':G<cr>', {})
+vim.api.nvim_set_keymap('n', '<leader>gd', ':Gdiffsplit<cr>', {})
+vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<cr>', {})
+vim.api.nvim_set_keymap('n', '<leader>gb', ':Gblame<cr>', {})
