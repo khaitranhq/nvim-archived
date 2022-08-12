@@ -1,14 +1,3 @@
---local Plug = vim.fn['plug#']
---
---vim.call('plug#begin', '~/AppData/Local/nvim/plugged')
---
---Plug 'Mofiqul/dracula.nvim'
---Plug 'preservim/nerdtree'
---Plug 'neoclide/coc.nvim', {'branch': 'release'}
---
---vim.call('plug#end')
-
-
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -40,4 +29,5 @@ return require('packer').startup(function(use)
 
   use 'sbdchd/neoformat'
   use 'tpope/vim-surround'
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 end)

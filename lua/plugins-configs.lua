@@ -188,3 +188,21 @@ require('lualine').setup {
 
 --NEOFORMAT
 vim.api.nvim_set_keymap('n', '<leader>fm', ':Neoformat<cr>', { })
+
+--BUFFERLINE
+require("bufferline").setup{
+  options = {
+    mode = "buffers", -- set to "tabs" to only show tabpages instead
+    numbers = "buffer_id",
+    indicator_icon = '▎',
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    diagnostics = "nvim_lsp",
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      return "("..count..")"
+    end,
+  }
+}
