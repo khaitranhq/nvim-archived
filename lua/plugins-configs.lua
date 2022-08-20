@@ -1,21 +1,23 @@
--- NERDTREE
+---------- NERDTREE ----------
+-- Quick key for toggle Nerdtree
 vim.api.nvim_set_keymap('','<c-b>', ':NERDTreeToggle<CR>', {})
+-- Show hidden
 vim.g.NERDTreeShowHidden=1
+-- Show line number
 vim.g.NERDTreeShowLineNumbers=1
-vim.g.NERDTreeDirArrows = 1
 
--- DRACULA.VIM
+---------- DRACULA.VIM ----------
+-- Set colorscheme is Dracula
 vim.cmd[[colorscheme dracula]]
+-- Enable 24-bit RGB color in terminal
 vim.opt.termguicolors=true
+-- Set background (dark/light)
 vim.opt.background='dark'
 
---NVIM-LSPCONFIG
-require'lspconfig'.pyright.setup{}
-
-
+---------- NVIM-LSPCONFIG ----------
 local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
+  -- Don't know this config, disable for testing
+  -- debounce_text_changes = 150,
 }
 
 local on_attach = function(client, bufnr)
@@ -25,19 +27,20 @@ local on_attach = function(client, bufnr)
 
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<leader>py', vim.lsp.buf.formatting, bufopts)
 end
 
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
+-- Rename variables 
+vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
+
+require('lspconfig').pyright.setup{}
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
 
---LINTER
+
+---------- CMD-VIM-LSP ----------
+
 local cmp = require'cmp'
 
 local has_words_before = function()
