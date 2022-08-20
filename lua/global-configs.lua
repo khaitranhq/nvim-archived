@@ -20,6 +20,14 @@ opt.undolevels=1000
 opt.clipboard='unnamed,unnamedplus'
 opt.autoread = true
 
+opt.spelllang='en'
+
+-- Fold
+opt.foldmethod='syntax'
+-- TODO set foldmethod=indent for python
+opt.foldcolumn='1'
+opt.foldlevelstart=99
+
 -- Move between splitted tabs
 vim.api.nvim_set_keymap('', '<c-k>', ':wincmd k<cr>', { noremap = true})
 vim.api.nvim_set_keymap('', '<c-j>', ':wincmd j<cr>', { noremap = true})
@@ -30,3 +38,7 @@ vim.api.nvim_set_keymap('', 'qq', ':qa<cr>', { noremap = true})
 vim.g.mapleader = ' '
 
 vim.api.nvim_set_keymap('n', ';', ':', { noremap = true})
+
+-- Turn on check spell
+vim.api.nvim_set_keymap('n', 'sp', ':set spell<cr>', { noremap = true})
+vim.api.nvim_set_keymap('n', 'ps', ':set spell!<cr>', { noremap = true})
