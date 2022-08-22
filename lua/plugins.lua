@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' 
   -- File explorer
   use 'preservim/nerdtree'
+  use 'Xuyuanp/nerdtree-git-plugin'
   -- diagnostic
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   -- Linting
@@ -26,7 +27,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   -- Icon for files
-  use 'kyazdani42/nvim-web-devicons'
+  use 'ryanoasis/vim-devicons'
   -- Git manager
   use 'tpope/vim-fugitive'
   -- Tabline
