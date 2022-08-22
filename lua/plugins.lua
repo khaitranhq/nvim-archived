@@ -53,4 +53,10 @@ return require('packer').startup(function(use)
 
   -- Smoothly scroll
   use 'karb94/neoscroll.nvim'
+
+  -- Analyze syntax
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
 end)
