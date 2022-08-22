@@ -147,7 +147,6 @@ vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<cr>', {})
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Gblame<cr>', {})
 
 --LUALINE
---TODO add buffer tabline
 require('lualine').setup {
   options = {
     icons_enabled = true,
