@@ -62,4 +62,7 @@ return require('packer').startup(function(use)
 
   -- Indent guide
   use "lukas-reineke/indent-blankline.nvim"
+
+  -- Dashboard
+  -- use {'glepnir/dashboard-nvim'}
 end)
