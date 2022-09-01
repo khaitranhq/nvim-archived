@@ -1,26 +1,28 @@
 vim.cmd [[packadd packer.nvim]]
-
 return require("packer").startup(
     function(use)
         -- Theme dracula
         use "dracula/vim"
+
         -- Package manager
         use "wbthomason/packer.nvim"
+
         -- File explorer
         use "preservim/nerdtree"
         use "Xuyuanp/nerdtree-git-plugin"
+
         -- diagnostic
         use "neovim/nvim-lspconfig" -- Configurations for Nvim LSP
+
         -- Linting
         use "hrsh7th/cmp-nvim-lsp"
         use "hrsh7th/cmp-buffer"
         use "hrsh7th/cmp-path"
         use "hrsh7th/cmp-cmdline"
         use "hrsh7th/nvim-cmp"
-        use "L3MON4D3/LuaSnip"
-        use "saadparwaiz1/cmp_luasnip"
         use "hrsh7th/cmp-vsnip"
         use "hrsh7th/vim-vsnip"
+
         -- Find, grep files
         use {
             "nvim-telescope/telescope.nvim",
@@ -28,21 +30,28 @@ return require("packer").startup(
             -- or                            , branch = '0.1.x',
             requires = {{"nvim-lua/plenary.nvim"}}
         }
+
         -- Icon for files
         use "ryanoasis/vim-devicons"
+
         -- Git manager
         use "tpope/vim-fugitive"
+
         -- Tabline
         use {
             "nvim-lualine/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true}
         }
-        -- Format cod3
+
+        -- Format code
         use "sbdchd/neoformat"
+
         -- Some utilize short keys
         use "tpope/vim-surround"
+
         -- Buffer line
         use {"akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons"}
+
         -- Comment code
         use {
             "numToStr/Comment.nvim",
@@ -50,6 +59,7 @@ return require("packer").startup(
                 require("Comment").setup()
             end
         }
+
         -- Preview markdown
         use(
             {
@@ -77,7 +87,17 @@ return require("packer").startup(
         use "f-person/git-blame.nvim"
 
         -- LSP installer
-        use {"williamboman/mason.nvim"}
-        use {"williamboman/mason-lspconfig.nvim"}
+        use {
+            "williamboman/mason.nvim",
+            run = function()
+                require("mason").setup()
+            end
+        }
+        use {
+            "williamboman/mason-lspconfig.nvim",
+            run = function()
+                require("mason-lspconfig").setup()
+            end
+        }
     end
 )

@@ -1,4 +1,6 @@
----------- NERDTREE ----------
+-----------------------------------------------
+---------------- NERDTREE ---------------------
+-----------------------------------------------
 -- Quick key for toggle Nerdtree
 vim.api.nvim_set_keymap("", "<c-b>", ":NERDTreeToggle<CR>", {})
 -- Show hidden
@@ -6,7 +8,9 @@ vim.g.NERDTreeShowHidden = 1
 -- Show line number
 vim.g.NERDTreeShowLineNumbers = 1
 
----------- DRACULA.VIM ----------
+-----------------------------------------------
+----------------- DRACULA ---------------------
+-----------------------------------------------
 -- Set colorscheme is Dracula
 vim.cmd [[colorscheme dracula]]
 -- Enable 24-bit RGB color in terminal
@@ -14,7 +18,9 @@ vim.opt.termguicolors = true
 -- Set background (dark/light)
 vim.opt.background = "dark"
 
----------- NVIM-LSPCONFIG ----------
+-----------------------------------------------
+----------------- LSP ---------------------
+-----------------------------------------------
 local lsp_flags = {}
 
 local on_attach = function(client, bufnr)
@@ -27,27 +33,6 @@ end
 
 -- Rename variables
 vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true})
-
-require("lspconfig").pyright.setup {}
-require("lspconfig")["tsserver"].setup {
-    on_attach = on_attach,
-    flags = lsp_flags
-}
-require("lspconfig").clangd.setup {}
-require("lspconfig").sumneko_lua.setup {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = {"vim"}
-            }
-        }
-    }
-}
-require("lspconfig").powershell_es.setup {
-  bundle_path = 'C:/Users/khai.tran/AppData/Local/nvim-data/mason/packages/powershell-editor-services'
-}
-
----------- CMD-VIM-LSP ----------
 
 local cmp = require "cmp"
 
@@ -64,21 +49,13 @@ vim.opt.completeopt = "menu,menuone,noselect,noinsert"
 cmp.setup(
     {
         snippet = {
-            -- REQUIRED - you must specify a snippet engine
             expand = function(args)
                 vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
             end
         },
         window = {},
         mapping = cmp.mapping.preset.insert(
             {
-                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-e>"] = cmp.mapping.abort(),
                 ["<CR>"] = cmp.mapping.confirm({select = true}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 ["<Tab>"] = cmp.mapping(
                     function(fallback)
@@ -110,9 +87,6 @@ cmp.setup(
             {
                 {name = "nvim_lsp"},
                 {name = "vsnip"} -- For vsnip users.
-                --{ name = 'luasnip' }, -- For luasnip users.
-                -- { name = 'ultisnips' }, -- For ultisnips users.
-                -- { name = 'snippy' }, -- For snippy users.
             },
             {
                 {name = "buffer"}
@@ -166,7 +140,35 @@ cmp.setup.cmdline(
 -- Setup lspconfig.
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- TELESCOPE
+require("lspconfig").pyright.setup {
+    capabilities = capabilities
+}
+require("lspconfig")["tsserver"].setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
+}
+require("lspconfig").clangd.setup {
+    capabilities = capabilities
+}
+require("lspconfig").sumneko_lua.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = {"vim"}
+            }
+        }
+    },
+    capabilities = capabilities
+}
+require("lspconfig").powershell_es.setup {
+    bundle_path = "C:/Users/khai.tran/AppData/Local/nvim-data/mason/packages/powershell-editor-services",
+    capabilities = capabilities
+}
+
+-----------------------------------------------
+---------------- TELESCOPE --------------------
+-----------------------------------------------
 vim.api.nvim_set_keymap("n", "<c-f>", "<cmd>Telescope find_files<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<c-g>", "<cmd>Telescope live_grep<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", {noremap = true})
@@ -211,13 +213,17 @@ keymap(
     opts
 )
 
--- GIT
+-----------------------------------------------
+-------------------- GIT ----------------------
+-----------------------------------------------
 vim.api.nvim_set_keymap("n", "<leader>gs", ":G<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>gd", ":Gdiffsplit<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>gc", ":Git commit<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Gblame<cr>", {})
 
---LUALINE
+-----------------------------------------------
+----------------- LUALINE ---------------------
+-----------------------------------------------
 require("lualine").setup {
     options = {
         icons_enabled = true,
@@ -259,10 +265,14 @@ require("lualine").setup {
     extensions = {}
 }
 
---NEOFORMAT
+-----------------------------------------------
+---------------- NEOFORMAT --------------------
+-----------------------------------------------
 vim.api.nvim_set_keymap("n", "<leader>fm", ":Neoformat<cr>", {})
 
---BUFFERLINE
+-----------------------------------------------
+---------------- BUFFERLINE -------------------
+-----------------------------------------------
 require("bufferline").setup {
     options = {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -280,9 +290,14 @@ require("bufferline").setup {
     }
 }
 
+-----------------------------------------------
+----------------- COMMENT ---------------------
+-----------------------------------------------
 require("Comment").setup()
 
--- TREESITTER
+-----------------------------------------------
+--------------- TREESITTER --------------------
+-----------------------------------------------
 require "nvim-treesitter.configs".setup {
     -- A list of parser names, or "all"
     ensure_installed = {"lua", "python", "typescript"},
@@ -310,44 +325,7 @@ require "nvim-treesitter.configs".setup {
     }
 }
 
--- DASHBOARD
--- local db = require("dashboard")
--- db.custom_center = {
---     {
---         icon = "  ",
---         desc = "Recently latest session                  ",
---         shortcut = "SPC s l",
---         action = "SessionLoad"
---     },
---     {
---         icon = "  ",
---         desc = "Recently opened files                   ",
---         action = "DashboardFindHistory",
---         shortcut = "SPC f h"
---     },
---     {
---         icon = "  ",
---         desc = "Find  File                              ",
---         action = "Telescope find_files find_command=rg,--hidden,--files",
---         shortcut = "SPC f f"
---     },
---     {
---         icon = "  ",
---         desc = "File Browser                            ",
---         action = "NERDTreeToggle",
---         shortcut = "SPC f b"
---     },
---     {
---         icon = "  ",
---         desc = "Find  word                              ",
---         action = "Telescope live_grep",
---         shortcut = "SPC f w"
---     }
--- }
-
--- GIT BLAME
+-----------------------------------------------
+---------------- GIT.BLAME --------------------
+-----------------------------------------------
 vim.g.gitblame_ignored_filetypes = {"nerdtree", "fugitive"}
-
--- Install LSP
-require("mason").setup()
-require("mason-lspconfig").setup()
