@@ -33,6 +33,19 @@ require("lspconfig")["tsserver"].setup {
     on_attach = on_attach,
     flags = lsp_flags
 }
+require("lspconfig").clangd.setup {}
+require("lspconfig").sumneko_lua.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = {"vim"}
+            }
+        }
+    }
+}
+require("lspconfig").powershell_es.setup {
+  bundle_path = 'C:/Users/khai.tran/AppData/Local/nvim-data/mason/packages/powershell-editor-services'
+}
 
 ---------- CMD-VIM-LSP ----------
 
@@ -160,34 +173,43 @@ vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", {noremap
 vim.api.nvim_set_keymap("n", "<leader>h", "<cmd>Telescope help_tags<cr>", {noremap = true})
 
 function vim.getVisualSelection()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
+    vim.cmd('noau normal! "vy"')
+    local text = vim.fn.getreg("v")
+    vim.fn.setreg("v", {})
 
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
+    text = string.gsub(text, "\n", "")
+    if #text > 0 then
+        return text
+    else
+        return ""
+    end
 end
 
-
 local keymap = vim.keymap.set
-local tb = require('telescope.builtin')
-local opts = { noremap = true, silent = true }
+local tb = require("telescope.builtin")
+local opts = {noremap = true, silent = true}
 
-keymap('n', '<space>g', ':Telescope current_buffer_fuzzy_find<cr>', opts)
-keymap('v', '<space>g', function()
-	local text = vim.getVisualSelection()
-	tb.current_buffer_fuzzy_find({ default_text = text })
-end, opts)
+keymap("n", "<space>g", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap(
+    "v",
+    "<space>g",
+    function()
+        local text = vim.getVisualSelection()
+        tb.current_buffer_fuzzy_find({default_text = text})
+    end,
+    opts
+)
 
-keymap('n', '<space>G', ':Telescope live_grep<cr>', opts)
-keymap('v', '<space>G', function()
-	local text = vim.getVisualSelection()
-	tb.live_grep({ default_text = text })
-end, opts)
+keymap("n", "<space>G", ":Telescope live_grep<cr>", opts)
+keymap(
+    "v",
+    "<space>G",
+    function()
+        local text = vim.getVisualSelection()
+        tb.live_grep({default_text = text})
+    end,
+    opts
+)
 
 -- GIT
 vim.api.nvim_set_keymap("n", "<leader>gs", ":G<cr>", {})
@@ -260,30 +282,6 @@ require("bufferline").setup {
 
 require("Comment").setup()
 
--- NEOSCROLL.NVIM
-require("neoscroll").setup(
-    {
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {
-            "<C-u>",
-            "<C-d>",
-            "<C-y>",
-            "<C-e>",
-            "zt",
-            "zz",
-            "zb"
-        },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
-        performance_mode = false -- Disable "Performance Mode" on all buffers.
-    }
-)
-
 -- TREESITTER
 require "nvim-treesitter.configs".setup {
     -- A list of parser names, or "all"
@@ -346,3 +344,10 @@ require "nvim-treesitter.configs".setup {
 --         shortcut = "SPC f w"
 --     }
 -- }
+
+-- GIT BLAME
+vim.g.gitblame_ignored_filetypes = {"nerdtree", "fugitive"}
+
+-- Install LSP
+require("mason").setup()
+require("mason-lspconfig").setup()
