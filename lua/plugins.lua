@@ -88,16 +88,10 @@ return require("packer").startup(
 
         -- LSP installer
         use {
-            "williamboman/mason.nvim",
-            run = function()
-                require("mason").setup()
-            end
+            "williamboman/mason.nvim"
         }
         use {
-            "williamboman/mason-lspconfig.nvim",
-            run = function()
-                require("mason-lspconfig").setup()
-            end
+            "williamboman/mason-lspconfig.nvim"
         }
     end
 )

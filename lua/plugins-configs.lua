@@ -162,8 +162,8 @@ require("lspconfig").sumneko_lua.setup {
     capabilities = capabilities
 }
 require("lspconfig").powershell_es.setup {
-    bundle_path = "C:/Users/khai.tran/AppData/Local/nvim-data/mason/packages/powershell-editor-services",
-    capabilities = capabilities
+    bundle_path = "C:/Users/khai.tran/Downloads/PowerShellEditorServices"
+    --capabilities = capabilities
 }
 
 -----------------------------------------------
@@ -173,6 +173,20 @@ vim.api.nvim_set_keymap("n", "<c-f>", "<cmd>Telescope find_files<cr>", {noremap 
 vim.api.nvim_set_keymap("n", "<c-g>", "<cmd>Telescope live_grep<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>h", "<cmd>Telescope help_tags<cr>", {noremap = true})
+
+local telescope = require("telescope")
+
+telescope.setup {
+    pickers = {
+        find_files = {
+            hidden = true,
+            no_ignore = true
+        }
+    },
+    defaults = {
+        file_ignore_patterns = {".git", "node_modules", "dist"}
+    }
+}
 
 function vim.getVisualSelection()
     vim.cmd('noau normal! "vy"')
@@ -269,6 +283,7 @@ require("lualine").setup {
 ---------------- NEOFORMAT --------------------
 -----------------------------------------------
 vim.api.nvim_set_keymap("n", "<leader>fm", ":Neoformat<cr>", {})
+-- vim.g.neoformat_verbose = "1"
 
 -----------------------------------------------
 ---------------- BUFFERLINE -------------------
@@ -329,3 +344,6 @@ require "nvim-treesitter.configs".setup {
 ---------------- GIT.BLAME --------------------
 -----------------------------------------------
 vim.g.gitblame_ignored_filetypes = {"nerdtree", "fugitive"}
+
+require("mason").setup()
+require("mason-lspconfig").setup()
