@@ -43,3 +43,6 @@ vim.api.nvim_set_keymap("n", ";", ":", {noremap = true})
 -- Turn on check spell
 vim.api.nvim_set_keymap("n", "sp", ":set spell<cr>", {noremap = true})
 vim.api.nvim_set_keymap("n", "ps", ":set spell!<cr>", {noremap = true})
+
+-- Search with current select text
+vim.api.nvim_set_keymap("v", "//", "y/\\V<C-R>=escape(@\",'/\')<CR><CR>", {noremap = true})
