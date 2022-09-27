@@ -8,8 +8,13 @@ return require("packer").startup(
         use "wbthomason/packer.nvim"
 
         -- File explorer
-        use "preservim/nerdtree"
-        use "Xuyuanp/nerdtree-git-plugin"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            requires = {
+                "kyazdani42/nvim-web-devicons" -- optional, for file icons
+            },
+            tag = "nightly" -- optional, updated every week. (see issue #1193)
+        }
 
         -- diagnostic
         use "neovim/nvim-lspconfig" -- Configurations for Nvim LSP
