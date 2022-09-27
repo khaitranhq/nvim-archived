@@ -184,7 +184,7 @@ telescope.setup {
         }
     },
     defaults = {
-        file_ignore_patterns = {".git", "node_modules", "dist"}
+        file_ignore_patterns = {".git", "node_modules", "dist", "venv", ".venv"}
     }
 }
 
@@ -205,7 +205,7 @@ local keymap = vim.keymap.set
 local tb = require("telescope.builtin")
 local opts = {noremap = true, silent = true}
 
-keymap("n", "<space>g", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap("n", "<space>gf", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap(
     "v",
     "<space>g",
