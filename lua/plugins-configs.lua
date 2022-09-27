@@ -1,12 +1,22 @@
 -----------------------------------------------
----------------- NERDTREE ---------------------
+---------------- NVIM TREE ---------------------
 -----------------------------------------------
--- Quick key for toggle Nerdtree
-vim.api.nvim_set_keymap("", "<c-b>", ":NERDTreeToggle<CR>", {})
--- Show hidden
-vim.g.NERDTreeShowHidden = 1
--- Show line number
-vim.g.NERDTreeShowLineNumbers = 1
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- empty setup using defaults
+require("nvim-tree").setup(
+    {
+        view = {
+            relativenumber = true
+        },
+        git = {
+            ignore = false
+        }
+    }
+)
+vim.api.nvim_set_keymap("", "<c-b>", ":NvimTreeToggle<CR>", {})
 
 -----------------------------------------------
 ----------------- DRACULA ---------------------
