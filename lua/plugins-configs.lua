@@ -302,7 +302,10 @@ require("bufferline").setup {
     options = {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         numbers = "buffer_id",
-        indicator_icon = "▎",
+        indicator = {
+          style = 'icon',
+          icon = '|',
+        },
         buffer_close_icon = "",
         modified_icon = "●",
         close_icon = "",
