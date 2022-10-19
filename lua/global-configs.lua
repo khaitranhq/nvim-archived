@@ -23,7 +23,7 @@ opt.autoread = true
 opt.spelllang = "en"
 
 -- Fold
-opt.foldmethod = "syntax"
+opt.foldmethod = "indent"
 -- TODO set foldmethod=indent for python
 vim.api.nvim_command("syntax on")
 opt.foldcolumn = "1"
