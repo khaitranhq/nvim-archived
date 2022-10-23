@@ -1,5 +1,5 @@
 -----------------------------------------------
----------------- NVIM TREE ---------------------
+---------------- NVIM TREE --------------------
 -----------------------------------------------
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
@@ -58,11 +58,6 @@ end
 vim.opt.completeopt = "menu,menuone,noselect,noinsert"
 cmp.setup(
     {
-        snippet = {
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            end
-        },
         window = {},
         mapping = cmp.mapping.preset.insert(
             {
@@ -71,8 +66,6 @@ cmp.setup(
                     function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif vim.fn["vsnip#available"](1) == 1 then
-                            feedkey("<Plug>(vsnip-expand-or-jump)", "")
                         elseif has_words_before() then
                             cmp.complete()
                         else
@@ -85,8 +78,6 @@ cmp.setup(
                     function()
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                            feedkey("<Plug>(vsnip-jump-prev)", "")
                         end
                     end,
                     {"i", "s"}
@@ -350,13 +341,14 @@ require "nvim-treesitter.configs".setup {
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false
+    },
+    autotag = {
+      enable = true
     }
 }
 
 -----------------------------------------------
----------------- GIT.BLAME --------------------
+------------------- MASON ---------------------
 -----------------------------------------------
-vim.g.gitblame_ignored_filetypes = {"nerdtree", "fugitive"}
-
-require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason").setup()
+-- require("mason-lspconfig").setup()

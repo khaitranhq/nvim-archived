@@ -21,12 +21,7 @@ return require("packer").startup(
 
         -- Linting
         use "hrsh7th/cmp-nvim-lsp"
-        use "hrsh7th/cmp-buffer"
-        use "hrsh7th/cmp-path"
-        use "hrsh7th/cmp-cmdline"
         use "hrsh7th/nvim-cmp"
-        use "hrsh7th/cmp-vsnip"
-        use "hrsh7th/vim-vsnip"
 
         -- Find, grep files
         use {
@@ -65,18 +60,6 @@ return require("packer").startup(
             end
         }
 
-        -- Preview markdown
-        use(
-            {
-                "iamcco/markdown-preview.nvim",
-                run = "cd app && npm install",
-                setup = function()
-                    vim.g.mkdp_filetypes = {"markdown"}
-                end,
-                ft = {"markdown"}
-            }
-        )
-
         -- Analyze syntax
         use {
             "nvim-treesitter/nvim-treesitter",
@@ -88,15 +71,17 @@ return require("packer").startup(
         -- Indent guide
         use "lukas-reineke/indent-blankline.nvim"
 
-        -- Git blame
-        use "f-person/git-blame.nvim"
-
         -- LSP installer
+        -- use {
+        --     "williamboman/mason.nvim"
+        -- }
+        -- use {
+        --     "williamboman/mason-lspconfig.nvim"
+        -- }
         use {
-            "williamboman/mason.nvim"
+          "windwp/nvim-autopairs",
+            config = function() require("nvim-autopairs").setup {} end
         }
-        use {
-            "williamboman/mason-lspconfig.nvim"
-        }
+        use "windwp/nvim-ts-autotag"
     end
 )
