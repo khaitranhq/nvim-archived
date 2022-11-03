@@ -58,6 +58,12 @@ end
 vim.opt.completeopt = "menu,menuone,noselect,noinsert"
 cmp.setup(
     {
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            end
+        },
         window = {},
         mapping = cmp.mapping.preset.insert(
             {
@@ -180,18 +186,18 @@ local telescope = require("telescope")
 telescope.setup {
     pickers = {
         find_files = {
-          find_command = {
-            'fd',
-            '--type',
-            'file',
-            '-I',
-            '--type',
-            'symlink',
-            '--hidden',
-            '--exclude',
-            '.git',
-            -- put your other patterns here
-          }
+            find_command = {
+                "fd",
+                "--type",
+                "file",
+                "-I",
+                "--type",
+                "symlink",
+                "--hidden",
+                "--exclude",
+                ".git"
+                -- put your other patterns here
+            }
         }
     },
     defaults = {
@@ -304,8 +310,8 @@ require("bufferline").setup {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         numbers = "buffer_id",
         indicator = {
-          style = 'icon',
-          icon = '|',
+            style = "icon",
+            icon = "|"
         },
         buffer_close_icon = "",
         modified_icon = "●",
@@ -353,7 +359,7 @@ require "nvim-treesitter.configs".setup {
         additional_vim_regex_highlighting = false
     },
     autotag = {
-      enable = true
+        enable = true
     }
 }
 
