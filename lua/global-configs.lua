@@ -22,6 +22,8 @@ opt.autoread = true
 
 opt.spelllang = "en"
 
+-- Don't generate swap files
+opt.swapfile = false
 -- Fold
 opt.foldmethod = "indent"
 -- TODO set foldmethod=indent for python
@@ -52,3 +54,4 @@ vim.api.nvim_set_keymap('', '<leader>.', '<C-W>>',{noremap=true})
 vim.api.nvim_set_keymap('', '<leader>,', '<C-W><',{noremap=true})
 vim.api.nvim_set_keymap('', '<leader>-', '<C-W>-',{noremap=true})
 vim.api.nvim_set_keymap('', '<leader>=', '<C-W>+',{noremap=true})
+
