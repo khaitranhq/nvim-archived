@@ -55,3 +55,5 @@ vim.api.nvim_set_keymap('', '<leader>,', '<C-W><',{noremap=true})
 vim.api.nvim_set_keymap('', '<leader>-', '<C-W>-',{noremap=true})
 vim.api.nvim_set_keymap('', '<leader>=', '<C-W>+',{noremap=true})
 
+-- Get path of current file
+vim.api.nvim_create_user_command('Cwd', 'echo @%', {})
