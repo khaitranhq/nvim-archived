@@ -77,12 +77,12 @@ return require("packer").startup(
         use "lukas-reineke/indent-blankline.nvim"
 
         -- LSP installer
-        -- use {
-        --     "williamboman/mason.nvim"
-        -- }
-        -- use {
-        --     "williamboman/mason-lspconfig.nvim"
-        -- }
+        use {
+            "williamboman/mason.nvim"
+        }
+        use {
+            "williamboman/mason-lspconfig.nvim"
+        }
 
         use {
             "windwp/nvim-autopairs",

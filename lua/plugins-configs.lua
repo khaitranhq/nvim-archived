@@ -148,7 +148,7 @@ require("lspconfig")["tsserver"].setup {
 require("lspconfig").clangd.setup {
     capabilities = capabilities
 }
-require("lspconfig").sumneko_lua.setup {
+require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
@@ -159,7 +159,8 @@ require("lspconfig").sumneko_lua.setup {
     capabilities = capabilities
 }
 require("lspconfig").powershell_es.setup {
-    bundle_path = "C:/Users/khai.tran/Downloads/PowerShellEditorServices"
+    bundle_path = "C:/Users/khai.tran/Downloads/PowerShellEditorServices",
+    shell = 'powershell.exe'
     --capabilities = capabilities
 }
 
@@ -356,5 +357,5 @@ require "nvim-treesitter.configs".setup {
 -----------------------------------------------
 ------------------- MASON ---------------------
 -----------------------------------------------
--- require("mason").setup()
--- require("mason-lspconfig").setup()
+require("mason").setup()
+require("mason-lspconfig").setup()
